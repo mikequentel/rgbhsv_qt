@@ -16,9 +16,9 @@ CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT $(DEFINES)
 INCPATH       = -I/usr/lib64/qt4/mkspecs/linux-g++ -I. -I/usr/include/QtCore -I/usr/include/QtGui -I/usr/include -I. -I. -I.
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS)  -L/usr/lib64 -lQtGui -lQtCore -lpthread 
+LIBS          = $(SUBLIBS)  -L/usr/lib64 -lQtGui -lQtCore -lpthread
 AR            = ar cqs
-RANLIB        = 
+RANLIB        =
 QMAKE         = /usr/lib64/qt4/bin/qmake
 TAR           = tar -cf
 COMPRESS      = gzip -9f
@@ -26,7 +26,7 @@ COPY          = cp -f
 SED           = sed
 COPY_FILE     = $(COPY)
 COPY_DIR      = $(COPY) -r
-STRIP         = 
+STRIP         =
 INSTALL_FILE  = install -m 644 -p
 INSTALL_DIR   = $(COPY_DIR)
 INSTALL_PROGRAM = install -m 755 -p
@@ -43,7 +43,7 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = main.cpp 
+SOURCES       = main.cpp
 OBJECTS       = main.o
 DIST          = /usr/lib64/qt4/mkspecs/common/unix.conf \
 		/usr/lib64/qt4/mkspecs/common/linux.conf \
@@ -71,7 +71,7 @@ DIST          = /usr/lib64/qt4/mkspecs/common/unix.conf \
 		/usr/lib64/qt4/mkspecs/features/include_source_dir.prf \
 		rgbhsv_qt.pro
 QMAKE_TARGET  = rgbhsv_qt
-DESTDIR       = 
+DESTDIR       =
 TARGET        = rgbhsv_qt
 
 first: all
@@ -98,7 +98,7 @@ first: all
 
 all: Makefile $(TARGET)
 
-$(TARGET): ui_rgbhsv_qt.h $(OBJECTS)  
+$(TARGET): rgbhsv_qt.h $(OBJECTS)
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: rgbhsv_qt.pro  /usr/lib64/qt4/mkspecs/linux-g++/qmake.conf /usr/lib64/qt4/mkspecs/common/unix.conf \
@@ -157,12 +157,12 @@ Makefile: rgbhsv_qt.pro  /usr/lib64/qt4/mkspecs/linux-g++/qmake.conf /usr/lib64/
 qmake:  FORCE
 	@$(QMAKE) -o Makefile rgbhsv_qt.pro
 
-dist: 
-	@$(CHK_DIR_EXISTS) .tmp/rgbhsv_qt1.0.0 || $(MKDIR) .tmp/rgbhsv_qt1.0.0 
+dist:
+	@$(CHK_DIR_EXISTS) .tmp/rgbhsv_qt1.0.0 || $(MKDIR) .tmp/rgbhsv_qt1.0.0
 	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/rgbhsv_qt1.0.0/ && $(COPY_FILE) --parents rgbhsv_qt.h .tmp/rgbhsv_qt1.0.0/ && $(COPY_FILE) --parents main.cpp .tmp/rgbhsv_qt1.0.0/ && $(COPY_FILE) --parents rgbhsv_qt.ui .tmp/rgbhsv_qt1.0.0/ && (cd `dirname .tmp/rgbhsv_qt1.0.0` && $(TAR) rgbhsv_qt1.0.0.tar rgbhsv_qt1.0.0 && $(COMPRESS) rgbhsv_qt1.0.0.tar) && $(MOVE) `dirname .tmp/rgbhsv_qt1.0.0`/rgbhsv_qt1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/rgbhsv_qt1.0.0
 
 
-clean:compiler_clean 
+clean:compiler_clean
 	-$(DEL_FILE) $(OBJECTS)
 	-$(DEL_FILE) *~ core *.core
 
@@ -170,7 +170,7 @@ clean:compiler_clean
 ####### Sub-libraries
 
 distclean: clean
-	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) $(TARGET)
 	-$(DEL_FILE) Makefile
 
 
@@ -189,11 +189,11 @@ compiler_image_collection_clean:
 	-$(DEL_FILE) qmake_image_collection.cpp
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_rgbhsv_qt.h
+compiler_uic_make_all: rgbhsv_qt.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_rgbhsv_qt.h
-ui_rgbhsv_qt.h: rgbhsv_qt.ui
-	/usr/lib64/qt4/bin/uic rgbhsv_qt.ui -o ui_rgbhsv_qt.h
+	-$(DEL_FILE) rgbhsv_qt.h
+rgbhsv_qt.h: rgbhsv_qt.ui
+	/usr/lib64/qt4/bin/uic rgbhsv_qt.ui -o rgbhsv_qt.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -201,11 +201,11 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_uic_clean 
+compiler_clean: compiler_uic_clean
 
 ####### Compile
 
-main.o: main.cpp 
+main.o: main.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 ####### Install
@@ -215,4 +215,3 @@ install:   FORCE
 uninstall:   FORCE
 
 FORCE:
-
