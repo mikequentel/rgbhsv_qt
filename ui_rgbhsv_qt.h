@@ -6,8 +6,8 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef RGBHSV_QT_H
-#define RGBHSV_QT_H
+#ifndef UI_RGBHSV_QT_H
+#define UI_RGBHSV_QT_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -136,4 +136,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // RGBHSV_QT_H
+#endif // UI_RGBHSV_QT_H

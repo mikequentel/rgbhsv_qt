@@ -10,6 +10,6 @@ INCLUDEPATH += .
 # Input
 FORMS += rgbhsv_qt.ui
 
-HEADERS = rgbhsv_qt.h
+HEADERS = ui_rgbhsv_qt.h
 
 SOURCES = main.cpp

@@ -1,4 +1,4 @@
-#include "rgbhsv_qt.h"
+#include "ui_rgbhsv_qt.h"
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
